@@ -1,0 +1,55 @@
+```
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+.Python
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+
+# Build artifacts
+dist/
+build/
+*.so
+*.dylib
+*.dll
+
+# Environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend specific
+sentrix-browser/backend/__pycache__/
+sentrix-browser/backend/*.pyc
+
+# Frontend specific
+sentrix-browser/frontend/node_modules/
+sentrix-browser/frontend/dist/
+sentrix-browser/frontend/build/
+```
