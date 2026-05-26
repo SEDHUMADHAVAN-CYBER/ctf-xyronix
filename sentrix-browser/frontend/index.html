@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <title>Sentrix Browser - AI Agentic Browser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <h1>🌐 Sentrix</h1>
+                <p class="tagline">AI Agentic Browser</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-view="chat">
+                    <span class="icon">💬</span>
+                    Chat Agent
+                </button>
+                <button class="nav-btn" data-view="tasks">
+                    <span class="icon">📋</span>
+                    Tasks
+                </button>
+                <button class="nav-btn" data-view="schedule">
+                    <span class="icon">⏰</span>
+                    Schedule
+                </button>
+                <button class="nav-btn" data-view="settings">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </button>
+            </nav>
+            
+            <div class="status-section">
+                <div class="status-indicator" id="backend-status">
+                    <span class="dot"></span>
+                    <span class="text">Checking...</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat View -->
+            <section id="chat-view" class="view active">
+                <div class="chat-header">
+                    <h2>Chat with Sentrix Agent</h2>
+                    <input type="text" id="current-url" placeholder="Current URL (optional)" class="url-input">
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message system">
+                        <div class="message-content">
+                            Welcome to Sentrix Browser! I'm your AI agent. 
+                            Tell me what task you'd like me to complete on the web.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <textarea id="chat-input" placeholder="Describe your task... (e.g., 'Find the latest news about AI' or 'Check my email for unread messages')"></textarea>
+                    <button id="send-btn" class="send-btn">Send</button>
+                </div>
+            </section>
+            
+            <!-- Tasks View -->
+            <section id="tasks-view" class="view">
+                <div class="view-header">
+                    <h2>Task Management</h2>
+                    <button id="new-task-btn" class="primary-btn">+ New Task</button>
+                </div>
+                
+                <div class="task-list" id="task-list">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </section>
+            
+            <!-- Schedule View -->
+            <section id="schedule-view" class="view">
+                <div class="view-header">
+                    <h2>Schedule Automated Tasks</h2>
+                </div>
+                
+                <div class="schedule-form">
+                    <div class="form-group">
+                        <label for="schedule-objective">Task Objective</label>
+                        <textarea id="schedule-objective" placeholder="What should Sentrix do?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="schedule-time">Schedule Time</label>
+                        <input type="datetime-local" id="schedule-time">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="schedule-url">Starting URL</label>
+                        <input type="url" id="schedule-url" placeholder="https://example.com">
+                    </div>
+                    
+                    <button id="schedule-task-btn" class="primary-btn">Schedule Task</button>
+                </div>
+            </section>
+            
+            <!-- Settings View -->
+            <section id="settings-view" class="view">
+                <div class="view-header">
+                    <h2>Settings</h2>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Backend Connection</h3>
+                    <div class="setting-item">
+                        <label>Backend URL</label>
+                        <input type="text" id="backend-url" value="http://127.0.0.1:8765" readonly>
+                    </div>
+                    <button id="test-connection-btn" class="secondary-btn">Test Connection</button>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Gmail Integration</h3>
+                    <p class="setting-description">
+                        Connect Sentrix to your Gmail account for automated email reports.
+                    </p>
+                    <button id="connect-gmail-btn" class="secondary-btn">Connect Gmail</button>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>About</h3>
+                    <p class="setting-description">
+                        Sentrix Browser v1.0.0<br>
+                        Decentralized AI Agentic Browser<br>
+                        Powered by Ollama & Playwright
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- New Task Modal -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <h3>Create New Task</h3>
+            <div class="form-group">
+                <label for="task-objective">Objective</label>
+                <textarea id="task-objective" placeholder="What should Sentrix accomplish?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="task-url">Starting URL</label>
+                <input type="url" id="task-url" placeholder="https://example.com">
+            </div>
+            <div class="modal-actions">
+                <button id="cancel-task-btn" class="secondary-btn">Cancel</button>
+                <button id="create-task-btn" class="primary-btn">Create Task</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="renderer.js"></script>
+</body>
+</html>
